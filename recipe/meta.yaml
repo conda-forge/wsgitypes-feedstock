@@ -7,21 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/wsgitypes-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/wsgitypes-{{ version }}.tar.gz
   sha256: 61d8594bb2ed254b03ae771caba95783c3f8d02911d36dc673e086d013ed2fef
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
   run:
     - mypy >=0.730
-    - python >=3.7
+    - python >={{ python_min }}
     - typing-extensions
 
 test:
@@ -31,6 +31,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/shabbyrobe/wsgitypes
