@@ -19,6 +19,7 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - mypy >=0.730
     - python >={{ python_min }}
